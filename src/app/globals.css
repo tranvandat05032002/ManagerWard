@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Custom color variables */
+  --primary: #18a55b;
+  --primary-box: #44b97c;
+  --primary-hover: #158a4d;
+  --primary-light: #e8f5e8;
+  --primary-dark: #0f6b3a;
 }
 
 @theme inline {
@@ -10,12 +17,19 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom color theme */
+  --color-primary: var(--primary);
+  --color-primary-box: var(--primary-box);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #161616;
   }
 }
 
@@ -23,4 +37,99 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Animated background */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, var(--primary-light), #e8f5e8, #f0f9f0, #d4f1d4);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+/* Global animated background - Pink 300 to Primary Green */
+body {
+  background: linear-gradient(-45deg, #ffbae0, #acfdd3, #ffbae0);
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
+  min-height: 100vh;
+}
+
+/* Alternative animated backgrounds - uncomment to use */
+
+/* Green theme */
+/*
+body {
+  background: linear-gradient(-45deg, #f0fdf4, #dcfce7, #bbf7d0, #86efac, #4ade80, #22c55e);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  min-height: 100vh;
+}
+*/
+
+/* Purple theme */
+/*
+body {
+  background: linear-gradient(-45deg, #faf5ff, #f3e8ff, #e9d5ff, #d8b4fe, #c084fc, #a855f7);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  min-height: 100vh;
+}
+*/
+
+/* Rainbow theme */
+/*
+body {
+  background: linear-gradient(-45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  min-height: 100vh;
+}
+*/
+
+/* Floating animation for cards */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-card {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse animation for icon */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(24, 165, 91, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 30px rgba(24, 165, 91, 0.6);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
