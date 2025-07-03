@@ -141,38 +141,58 @@ export default function ListCollection() {
 
                     {/* Collections List */}
                     {!isLoading && !error && collections.length > 0 && (
-                        <div className="grid gap-4">
-                            {collections.map((collection, index) => (
-                                <div
-                                    key={collection.name}
-                                    className="cursor-pointer border border-gray-200 rounded-lg p-4 hover:border-primary hover:shadow-md transition-all duration-200"
-                                >
-                                    <div className="flex justify-between items-center">
-                                        <div className="flex items-center">
-                                            <div className="w-10 h-10 bg-primary-light rounded-lg flex items-center justify-center mr-4">
-                                                <FiDatabase className="w-5 h-5 text-primary" />
+                        <>
+                            <div className="grid gap-4">
+                                {collections.map((collection, index) => (
+                                    <div
+                                        key={collection.name}
+                                        className="border border-gray-200 rounded-lg p-4"
+                                    >
+                                        <div className="flex justify-between items-center">
+                                            <div className="flex items-center">
+                                                <div className="w-10 h-10 bg-primary-light rounded-lg flex items-center justify-center mr-4">
+                                                    <FiDatabase className="w-5 h-5 text-primary" />
+                                                </div>
+                                                <div>
+                                                    <h3 className="font-semibold text-gray-900 capitalize">
+                                                        {collection.name.replace(/_/g, ' ')}
+                                                    </h3>
+                                                    <p className="text-sm text-gray-500">
+                                                        {collection.count?.toLocaleString()} documents
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <h3 className="font-semibold text-gray-900 capitalize">
-                                                    {collection.name.replace(/_/g, ' ')}
-                                                </h3>
-                                                <p className="text-sm text-gray-500">
-                                                    {collection.count?.toLocaleString()} documents
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="text-right">
-                                            <div className="text-sm font-medium text-gray-900">
-                                                {collection.size}
-                                            </div>
-                                            <div className="text-xs text-gray-500">
-                                                Size
+                                            <div className="text-right">
+                                                <div className="text-sm font-medium text-gray-900">
+                                                    {collection.size}
+                                                </div>
+                                                <div className="text-xs text-gray-500">
+                                                    Size
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                ))}
+                            </div>
+
+                            {/* Next Button */}
+                            <div className="mt-8 pt-6 border-t border-gray-200">
+                                <div className="flex justify-between items-center">
+                                    <div className="text-sm text-gray-600">
+                                        Đã tìm thấy {collections.length} collection
+                                    </div>
+                                    <a
+                                        href="/update-data"
+                                        className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary-hover focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors"
+                                    >
+                                        Tiếp theo
+                                        <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
                                 </div>
-                            ))}
-                        </div>
+                            </div>
+                        </>
                     )}
 
                     {/* Empty State */}
